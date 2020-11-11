@@ -1,0 +1,157 @@
+IIFE :
+
+1) To print odd values in an array
+
+var arr = [1, 2, 3, 4, 5,6, 7, 8, 9, 10, 11]
+
+var oddArr = (function(x){
+    
+    return  x.filter( e => e%2 !== 0)
+    
+})(arr);
+
+console.log(oddArr)
+
+o/p : [ 1, 3, 5, 7, 9, 11 ]
+
+		--------------------------------------------------------------------
+
+2) To convert all the strings to title caps in string array
+
+var strArr = ["lok", "aed","fwv"]
+
+var strCaps = (function(x){
+    return x.map(e => {
+        let temp = e.split("")
+        temp[0] = temp[0].toUpperCase();
+        return temp.join("");
+    })
+})(strArr);
+
+console.log(strCaps)
+
+o/p : [ 'Lok', 'Aed', 'Fwv' ]
+
+		--------------------------------------------------------------------
+		
+3) Sum of all numbers in an array
+
+var intArr = [12, 43, 24, 56, 4, 9]
+
+var sum = (function(x){
+    let a = 10;
+    return x.reduce( (a,c) =>  a+c )
+})(intArr);
+
+console.log(sum)
+
+o/p : 148
+
+		--------------------------------------------------------------------
+ 
+4) Return all the prime numbers in an array 
+
+var intArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+
+var primes = (function(x){
+    
+    return x.filter( e => {
+        if( e === 1){
+            return false
+        }else if( e === 2){
+            return true
+        }else {
+            for( let i = 2; i < e; i++){
+                if( e%i === 0){
+                    return false
+                }
+            }
+            return true
+        }
+    })
+    
+})(intArr)
+
+console.log(primes)
+
+o/p : [ 2, 3, 5, 7, 11, 13, 17, 19 ]
+
+	---------------------------------------------------------------------
+
+5) Return all the palindromes in an array
+
+var strArr = ["a", "lokol", "lokesh", "abcba", "palin", "palilap"];
+
+var pals = (function(x){
+    return x.filter( e => (e === e.split("").reverse().join("")))
+})(strArr)
+
+console.log(pals)
+
+o/p : [ 'a', 'lokol', 'abcba', 'palilap' ]
+
+	---------------------------------------------------------------------
+
+6) Return median of two sorted arrays of same size
+
+var a1 = [6, 7, 8, 9]
+var a2 = [1, 3, 4, 5]
+
+var med = (function(x, y){
+    x.push(...y)
+    x.sort((a,b) => a-b )
+    let len = x.length
+    return (x[len/2] + x[len/2 - 1])/2
+    
+})(a1, a2)
+
+console.log(med)
+
+o/p : 5.5
+
+	---------------------------------------------------------------------
+
+7) Remove duplicates from an array
+
+var arr = [1, 2, 7, 3, 9, 6, 7, 9, 8, 9, 1, 3]
+
+let res = (function(x){
+    var flag = 1;
+    return x.filter( e => {
+        for(i = flag; i < x.length; i++){
+            if( e === x[i]){
+                flag++;
+                return false
+            }
+        }
+        flag++;
+        return true
+    })
+})(arr)
+
+console.log(res)
+
+o/p: [ 2, 6, 7, 8, 9, 1, 3 ]
+
+	---------------------------------------------------------------------
+
+8) Rotate an array by k times and return the rotated array
+
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+var resArr = (function(x, y){
+    for(let i = 0; i < y; i++){
+        let temp = x[0];
+        x.shift();
+        x.push(temp);
+    }
+    return x
+})(arr, 4)
+
+console.log(resArr)
+
+o/p: [ 5, 6, 7, 8, 9, 10, 1, 2, 3, 4 ]
+
+
+
+
